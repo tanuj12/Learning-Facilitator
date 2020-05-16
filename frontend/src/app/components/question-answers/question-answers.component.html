@@ -1,0 +1,165 @@
+<div class="login-wrapper" style="padding-top: 25%;padding-bottom: 15%;" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box" style="top:30%">
+    <mat-card-header>
+      <mat-card-title>Q and A</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]='form' (submit) = 'onSubmit()'>
+      <div align='center'>
+        <button mat-stroked-button type='button' (click)='filePicker.click()'>Pick File</button>
+        <input type="file" #filePicker (change)='onImagePicked($event)'>
+      <div class="file-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('file').valid">
+          <img src="assets/img/a.png">
+          <h4  style='display:inline;padding-left: 5px;top :-10px;'>{{form.value.file.name}} </h4>
+      </div>
+        <button *ngIf='submitBut' type="submit" mat-stroked-button color="accent" class="btn-block">Upload File</button>
+        <h4 *ngIf='Upload'>Processing Documents.Please wait..</h4>
+      </div>
+    </form>
+    <mat-spinner *ngIf="Upload && !submitBut"></mat-spinner>
+    <mat-card *ngIf="!Upload && !submitBut" style="margin-top: 50px; top: 50px;">
+      <form [formGroup]="form2" (submit) ='askQuestion()' >
+        <mat-form-field>
+        <input matInput  type="text" formControlName="question" name="title" placeholder="Enter Your Question.">
+        <mat-error *ngIf="form2.get('question').invalid">Please enter a valid question</mat-error>
+      </mat-form-field>
+    <button mat-raised-button
+      color='accent' type="submit">Ask</button>
+    </form>
+  </mat-card>
+  <mat-accordion style="position: relative; top: 30px;" *ngIf="qNa" multi='true'>
+    <mat-expansion-panel *ngFor="let item of qNa">
+      <mat-expansion-panel-header>
+        {{item.question}}
+        <div id="share-buttons">
+
+
+
+          <!-- Email -->
+          <a href="mailto:?Subject=Question Answer &amp;Body={{item.question}}%20{{item.answer}}">
+              <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+          </a>
+
+          <!-- Facebook -->
+          <a href="http://www.facebook.com/sharer.php?u={{item.question}}%20{{item.answer}}" target="_blank">
+              <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+          </a>
+
+
+          <!-- LinkedIn -->
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+              <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+          </a>
+
+          <!-- Print -->
+          <a href="javascript:;" onclick="window.print()">
+              <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+          </a>
+
+
+
+
+          <!-- Twitter -->
+          <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+              <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+          </a>
+
+
+        <a href="whatsapp://send?text={{item.question}}%20{{item.answer}}"><img src="assets/img/whatsapp.png" alt="WhatsApp" style="border-radius: 100%" /></a>
+
+      </div>
+      </mat-expansion-panel-header>
+     <p *ngIf='! (item.answer == "") ' > {{item.answer}}</p>
+     <p *ngIf=' (item.answer == "") ' > No answer Found</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p *ngIf ='!qNa' class ="info-text mat-body-1" >No questions Asked</p>
+</mat-card>
+
+</div>
+<footer class="footer" style="position: sticky; height: 30%;padding-top:0px;padding-bottom: 0px;">
+  <div class="container">
+
+    <!-- Newsletter -->
+
+
+    <!-- Footer Content -->
+
+    <div class="footer_content">
+      <div class="row">
+
+        <!-- Footer Column - About -->
+        <div class="col-lg-3 footer_col">
+
+          <!-- Logo -->
+          <div class="logo_container">
+            <div class="logo">
+              <img src="assets/img/logo.png" alt="">
+              <span>PrepNotes</span>
+            </div>s
+          </div>
+
+
+        </div>
+
+        <!-- Footer Column - Menu -->
+
+        <div class="col-lg-3 footer_col">
+          <div class="footer_column_title">Menu</div>
+          <div class="footer_column_content">
+            <ul>
+              <li class="footer_list_item"><a routerLink='/homePage' routerLinkActive='active'>Home</a></li>
+                <li class="footer_list_item"><a >About Us</a></li>
+                <li class="footer_list_item"><a >Ask Questions</a></li>
+                <li class="footer_list_item"><a >Notes</a></li>
+                <li class="footer_list_item"><a >contact us</a></li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Footer Column - Usefull Links -->
+
+        <div class="col-lg-3 footer_col">
+          <div class="footer_column_title">Usefull Links</div>
+          <div class="footer_column_content">
+            <ul>
+              <li class="footer_list_item"><a >Testimonials</a></li>
+              <li class="footer_list_item"><a >Tutorials</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Column - Contact -->
+
+        <div class="col-lg-3 footer_col">
+          <div class="footer_column_title">Contact</div>
+          <div class="footer_column_content">
+            <ul>
+              <li class="footer_contact_item">
+                <div class="footer_contact_icon">
+                  <img src="assets/img/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                </div>
+                KLS GIT
+              </li>
+              <li class="footer_contact_item">
+                <div class="footer_contact_icon">
+                  <img src="assets/img/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                </div>
+                +91 9988776655
+              </li>
+              <li class="footer_contact_item">
+                <div class="footer_contact_icon">
+                  <img src="assets/img/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                </div>queston@notes.com
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Copyright -->
+
+
+  </div>
+</footer>

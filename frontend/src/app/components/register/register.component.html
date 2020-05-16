@@ -1,0 +1,104 @@
+<div class="login-wrapper"  fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box" style="top:130px; width: 100%;">
+    <mat-card-header>
+      <mat-card-title>Registration</mat-card-title>
+    </mat-card-header>
+    <mat-error *ngIf='userCreateError'>Email already exists try again</mat-error>
+
+    <form class="example-form" [formGroup] = 'form' (submit) ='onSubmit()'>
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName ='uName' placeholder="Username">
+          <mat-error *ngIf="form.get('uName').invalid">Enter a valid username</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName ='email' placeholder="Email">
+          <mat-error *ngIf="form.get('email').invalid">Enter a valid Email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput formControlName ='password' placeholder="Password">
+          <mat-error *ngIf="form.get('password').invalid">Enter a valid password</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput formControlName ='cpassword' placeholder="Confirm Password">
+          <mat-error *ngIf="(form.get('cpassword').invalid)">Password invalid</mat-error>
+          <mat-error *ngIf="form.value.password !== form.value.cpassword">Password do not match</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Register</button>
+    </form>
+  </mat-card>
+
+</div>
+<div class="menu_container menu_mm">
+
+  <!-- Menu Close Button -->
+  <div class="menu_close_container">
+    <div class="menu_close"></div>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="menu_inner menu_mm">
+    <div class="menu menu_mm">
+      <ul class="menu_list menu_mm">
+        <li class="menu_item menu_mm"><a routerLink='/mainPage' routerLinkActive='active'>Home</a></li>
+        <li class="menu_item menu_mm"><a href="#">About us</a></li>
+        <li class="menu_item menu_mm"><a >Courses</a></li>
+        <li class="menu_item menu_mm"><a href="elements.html">Elements</a></li>
+        <li class="menu_item menu_mm"><a href="news.html">News</a></li>
+        <li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- Menu Social -->
+
+      <div class="menu_social_container menu_mm">
+        <ul class="menu_social menu_mm">
+          <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+          <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ aria-hidden="true" >
+ <div class="modal-dialog form-dark" role="document">
+   <form action="/examples/actions/confirmation.php" method="post">
+     <div class="modal-content card card-image" style="background-image: url(https://www.ecampusnews.com/files/2016/10/etextbook.jpg);">
+       <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+         <div class="signup-form">
+           <h2>Register</h2>
+           <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+           <div class="form-group">
+             <input type="text" class="form-control" name="first_name" placeholder="First Name" required="required">
+           </div>
+           <div class="form-group">
+             <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+           </div>
+           <div class="form-group">
+             <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+           </div>
+           <div class="form-group">
+             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+           </div>
+           <div class="form-group">
+             <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+           </div>
+           <div class="form-group">
+             <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+           </div>
+           <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+         </div>
+       </div>
+     </div>
+   </form>
+ </div>
+</div> -->

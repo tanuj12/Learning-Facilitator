@@ -1,0 +1,188 @@
+<!-- Toolbar
+<mat-toolbar *ngIf=(this.toolBar) color="primary" class="app-header">
+  <span class="nav-tool-items">
+    <button class="btn" mat-raised-button *ngIf='(this.router.url == "/homePage") || (this.router.url=="/notes") || (this.router.url=="/questionAnswers")' routerLink='/homePage' routerLinkActive='active'>Home</button>
+    <button class="btn" mat-raised-button routerLink='/login' *ngIf='(this.router.url == "/login") || (this.router.url=="/register") || (this.router.url=="/passwordReset")' routerLinkActive='active'>Login</button>
+    <button class="btn" mat-raised-button routerLink='/register' *ngIf='(this.router.url == "/login") || (this.router.url == "/register") || (this.router.url =="/passwordReset")' routerLinkActive='active'>Register</button>
+    <button class="btn" mat-raised-button (click) = 'Logout()' *ngIf='(this.router.url == "/homePage") || (this.router.url=="/notes") || (this.router.url=="/questionAnswers")'>Logout</button>
+  </span>
+</mat-toolbar> -->
+
+
+					<!-- Modal -->
+    <!--/.Content-->
+<!-- Modal -->
+
+  <!-- Header -->
+
+<div class="super_container" *ngIf="toolBar">
+  <header onload="loadscript()" class="header d-flex flex-row" *ngIf="toolBar">
+		<div class="header_content d-flex flex-row align-items-center">
+			<!-- Logo -->
+			<div class="logo_container">
+				<div class="logo">
+					<img src="assets/img/logo.png" alt="">
+					<span>PrepNotes</span>
+				</div>
+			</div>
+
+			<!-- Main Navigation -->
+			<nav class="main_nav_container">
+				<div class="main_nav">
+					<ul class="main_nav_list">
+						<li *ngIf="!isLoggedIn" class="main_nav_item"><a routerLink='/mainPage' routerLinkActive='active'>home</a></li>
+						<li *ngIf="isLoggedIn" class="main_nav_item"><a routerLink='/homePage' routerLinkActive='active'>home</a></li>
+            <li class="main_nav_item"><a href="#">about us</a></li>
+            <li *ngIf="!isLoggedIn"  class="main_nav_item"><a routerLink='/login' routerLinkActive='active'>Ask Questions</a></li>
+            <li *ngIf="isLoggedIn" class="main_nav_item"><a routerLink='/questionAnswers' routerLinkActive='active'>Ask Questions</a></li>
+            <li *ngIf="!isLoggedIn"  class="main_nav_item"><a routerLink='/login' routerLinkActive='active'>Notes</a></li>
+            <li *ngIf="isLoggedIn" class="main_nav_item"><a routerLink='/notes' routerLinkActive='active'>Notes</a></li>
+						<li class="main_nav_item"><a >contact us</a></li>
+						<li *ngIf="isLoggedIn" class="main_nav_item"><a (click)='Logout()' >Logout</a></li>
+          </ul>
+				</div>
+			</nav>
+		</div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<img src="assets/img/phone-call.svg" alt="">
+			<span>+91 8123861957</span>
+		</div>
+
+		<!-- Hamburger -->
+		<div class="hamburger_container">
+			<i class="fas fa-bars trans_200"></i>
+		</div>
+
+  </header>
+  <div class="menu_container menu_mm" *ngIf="toolBar" >
+
+		<!-- Menu Close Button -->
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+				<ul class="menu_list menu_mm">
+          <li *ngIf="!isLoggedIn" class="menu_item menu_mm"><a routerLink='/mainPage' routerLinkActive='active'>Home</a></li>
+          <li *ngIf="isLoggedIn" class="menu_item menu_mm"><a routerLink='/homePage' routerLinkActive='active'>Home</a></li>
+          <li class="menu_item menu_mm"><a href="#">About Us</a></li>
+          <li *ngIf="!isLoggedIn"  class="menu_item menu_mm"><a routerLink='/login' routerLinkActive='active'>Ask Questions</a></li>
+          <li *ngIf="isLoggedIn" class="menu_item menu_mm"><a routerLink='/questionAnswers' routerLinkActive='active'>Ask Questions</a></li>
+          <li *ngIf="!isLoggedIn"  class="menu_item menu_mm"><a routerLink='/login' routerLinkActive='active'>Notes</a></li>
+          <li *ngIf="isLoggedIn" class="menu_item menu_mm"><a routerLink='/notes' routerLinkActive='active'>Notes</a></li>
+          <li class="menu_item menu_mm"><a >Contact Us</a></li>
+          <li *ngIf="isLoggedIn" class="menu_item menu_mm"><a (click)='Logout()' >Logout</a></li>
+				</ul>
+
+				<!-- Menu Social -->
+
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+<router-outlet></router-outlet>
+<footer *ngIf="(router.url !== '/questionAnswers') && toolBar" class="footer" style="position: sticky; height: 30%;padding-top:0px;padding-bottom: 0px;">
+  <div class="container">
+
+    <!-- Newsletter -->
+
+
+    <!-- Footer Content -->
+
+    <div class="footer_content">
+      <div class="row">
+
+        <!-- Footer Column - About -->
+        <div class="col-lg-3 footer_col">
+
+          <!-- Logo -->
+          <div class="logo_container">
+            <div class="logo">
+              <img src="assets/img/logo.png" alt="">
+              <span>PrepNotes</span>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Footer Column - Menu -->
+
+        <div class="col-lg-3 footer_col">
+          <div class="footer_column_title">Menu</div>
+          <div class="footer_column_content">
+            <ul>
+              <li *ngIf="!isLoggedIn" class="footer_list_item"><a routerLink='/mainPage' routerLinkActive='active'>Home</a></li>
+              <li *ngIf="isLoggedIn" class="footer_list_item"><a routerLink='/homePage' routerLinkActive='active'>Home</a></li>
+              <li class="footer_list_item"><a href="#">About Us</a></li>
+              <li *ngIf="!isLoggedIn"  class="footer_list_item"><a routerLink='/login' routerLinkActive='active'>Ask Questions</a></li>
+              <li *ngIf="isLoggedIn" class="footer_list_item"><a routerLink='/questionAnswers' routerLinkActive='active'>Ask Questions</a></li>
+              <li *ngIf="!isLoggedIn"  class="footer_list_item"><a routerLink='/login' routerLinkActive='active'>Notes</a></li>
+              <li *ngIf="isLoggedIn" class="footer_list_item"><a routerLink='/notes' routerLinkActive='active'>Notes</a></li>
+              <li class="footer_list_item"><a >Contact Us</a></li>
+              <li *ngIf="isLoggedIn" class="footer_list_item"><a (click)='Logout()' >Logout</a></li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Footer Column - Usefull Links -->
+
+        <div class="col-lg-3 footer_col">
+          <div class="footer_column_title">Usefull Links</div>
+          <div class="footer_column_content">
+            <ul>
+              <li class="footer_list_item"><a >Testimonials</a></li>
+              <li class="footer_list_item"><a >Tutorials</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Column - Contact -->
+
+        <div class="col-lg-3 footer_col">
+          <div class="footer_column_title">Contact</div>
+          <div class="footer_column_content">
+            <ul>
+              <li class="footer_contact_item">
+                <div class="footer_contact_icon">
+                  <img src="assets/img/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                </div>
+                KLS GIT
+              </li>
+              <li class="footer_contact_item">
+                <div class="footer_contact_icon">
+                  <img src="assets/img/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                </div>
+                +91 9988776655
+              </li>
+              <li class="footer_contact_item">
+                <div class="footer_contact_icon">
+                  <img src="assets/img/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                </div>queston@notes.com
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Copyright -->
+
+
+  </div>
+</footer>
+</div>

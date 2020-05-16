@@ -1,0 +1,29 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" style="padding-top: 15%;">
+<mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Notes Making</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]='form' (submit) = 'onSubmit()'>
+
+      <h3 align='center'>Please Select a docx file</h3>
+        <div align='center'>
+          <button mat-stroked-button type='button' (click)='filePicker.click()'>Pick File</button>
+          <input type="file" #filePicker (change)='onImagePicked($event)'>
+      <div *ngFor="let item of noFile">
+        <div *ngIf='form.value[item]'>
+            <div class="file-preview" *ngIf="imagePreview !== '' && imagePreview">
+                <img style="top:-4px" src="assets/img/a.png" />
+                <h4 style='display:inline;padding-left: 5px;'>{{form.value[item].name}} </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div align='center'>
+        <button  mat-stroked-button *ngIf='submitBut' type="submit" >Generate Notes</button>
+        <h4 *ngIf='waitingForDownload'>Processing Documents.Please wait..</h4>
+        <mat-spinner *ngIf='waitingForDownload'></mat-spinner>
+        <button type='button' *ngIf = 'downloadisReady' mat-stroked-button color="accent" (click) = 'Download()'>Download Notes</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
